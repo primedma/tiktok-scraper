@@ -870,10 +870,10 @@ export class TikTokScraper extends EventEmitter {
             const response = await this.request<TikTokMetadata>(query);
 
             if (!response) {
-                throw new Error(`Can't find user: ${this.input}`);
+                throw new Error(`Can't find user: ${this.input}, resp: false`);
             }
             if (response.statusCode !== 0) {
-                throw new Error(`Can't find user: ${this.input}`);
+                throw new Error(`Can't find user: ${this.input}, resp: ${response.statusCode}`);
             }
             return response.userInfo;
         } catch (error) {
