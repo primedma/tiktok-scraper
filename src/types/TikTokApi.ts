@@ -82,6 +82,7 @@ export interface Item {
 
 export interface RequestQuery {
     id?: string;
+    musicID?: string;
     secUid?: string;
     shareUid?: string;
     type?: number;
@@ -94,6 +95,25 @@ export interface RequestQuery {
     challengeID?: string;
     cursor?: number;
     aid?: number;
+    appId?: number;
+    user_agent?: string;
+    screen_width?: number;
+    screen_height?: number;
+    browser_language?: string;
+    browser_platform?: string;
+    isIOS?: boolean;
+    isMobile?: boolean;
+    isAndroid?: boolean;
+    appType?: string;
+    browser_online?: boolean;
+    browser_version?: string;
+    browser_name?: string;
+    validUniqueId?: string;
+    uniqueId?: string;
+    isUniqueId?: boolean;
+    OS?: string;
+    app_name?: string;
+    device_platform?: string;
 }
 
 export interface VideoProps {
@@ -114,6 +134,7 @@ export interface ItemListData {
     hasMore: boolean;
     maxCursor: string;
     minCursor: string;
+    cursor: string;
 }
 
 export interface FeedItems {
@@ -296,4 +317,12 @@ export interface HashtagMetadata {
         isCommerce: boolean;
     };
     stats: { videoCount: number; viewCount: number };
+}
+
+export interface WebHtmlUserMetadata {
+    props: {
+        pageProps: {
+            userInfo: UserMetadata;
+        };
+    };
 }
