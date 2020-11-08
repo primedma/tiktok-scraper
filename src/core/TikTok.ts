@@ -948,6 +948,12 @@ export class TikTokScraper extends EventEmitter {
 
         return sign(this.headers['User-Agent'], this.input);
     }
+    
+    public async closeAllConnections() {
+        
+        return await this.returnInitError('manual connection close')
+        
+    }
 
     /**
      * Get video url without the watermark
