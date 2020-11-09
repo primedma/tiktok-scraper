@@ -22,7 +22,7 @@ import {
 import CONST from './constant';
 import { makeid } from './helpers';
 
-const INIT_OPTIONS = {
+let INIT_OPTIONS = {
     number: 30,
     download: false,
     zip: false,
@@ -145,6 +145,11 @@ export const getUserProfileInfo = async (input: string, options = {} as Options)
     if (options?.proxyFile) {
         options.proxy = await proxyFromFile(options?.proxyFile);
     }
+    INIT_OPTIONS.headers = {
+        'User-Agent': CONST.userAgentList[Math.floor(Math.random() * CONST.userAgentList.length)],
+        Referer: 'https://www.tiktok.com/',
+        Cookie: `tt_webid_v2=68${makeid(16)}`,
+    }
     const contructor: TikTokConstructor = { ...INIT_OPTIONS, ...options, ...{ type: 'sinsgle_user' as ScrapeType, input } };
     const scraper = new TikTokScraper(contructor);
 
@@ -186,7 +191,6 @@ export const getVideoMeta = async (input: string, options = {} as Options): Prom
         collector: [result],
     };
 };
-
 export const video = async (input: string, options = {} as Options): Promise<any> => {
     if (options && typeof options !== 'object') {
         throw new TypeError('Object is expected');
