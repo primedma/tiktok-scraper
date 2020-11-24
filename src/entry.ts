@@ -140,7 +140,7 @@ export const getUserProfileInfo = async (input: string, options = {} as Options)
         options.proxy = await proxyFromFile(options?.proxyFile);
     }
 
-    const contructor: TikTokConstructor = { ...NEW_INIT_OPTIONS, ...options, ...{ type: 'sinsgle_user' as ScrapeType, input } };
+    const contructor: TikTokConstructor = { ...INIT_OPTIONS, ...options, ...{ type: 'sinsgle_user' as ScrapeType, input } };
     const scraper = new TikTokScraper(contructor);
 
     const result = await scraper.getUserProfileInfo();
