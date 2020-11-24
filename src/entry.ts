@@ -131,30 +131,7 @@ export const getMusicInfo = async (input: string, options = {} as Options): Prom
 };
 
 export const getUserProfileInfo = async (input: string, options = {} as Options): Promise<UserMetadata> => {
-    let NEW_INIT_OPTIONS = {
-        number: 30,
-        download: false,
-        zip: false,
-        asyncDownload: 5,
-        asyncScraping: 3,
-        proxy: [],
-        filepath: process.cwd(),
-        filetype: 'na',
-        progress: false,
-        event: false,
-        by_user_id: false,
-        noWaterMark: false,
-        hdVideo: false,
-        timeout: 0,
-        tac: '',
-        signature: '',
-        verifyFp: CONST.verifyFp(),
-        headers: {
-            'User-Agent': CONST.userAgent(),
-            Referer: 'https://www.tiktok.com/',
-            Cookie: `tt_webid_v2=68${makeid(16)}`,
-        },
-    };
+
     if (options && typeof options !== 'object') {
         throw new TypeError('Object is expected');
     }
