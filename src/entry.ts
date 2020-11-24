@@ -138,11 +138,7 @@ export const getUserProfileInfo = async (input: string, options = {} as Options)
     if (options?.proxyFile) {
         options.proxy = await proxyFromFile(options?.proxyFile);
     }
-    INIT_OPTIONS.headers = {
-        'User-Agent': CONST.userAgentList[Math.floor(Math.random() * CONST.userAgentList.length)],
-        Referer: 'https://www.tiktok.com/',
-        Cookie: `tt_webid_v2=68${makeid(16)}`,
-    }
+
     const contructor: TikTokConstructor = { ...INIT_OPTIONS, ...options, ...{ type: 'sinsgle_user' as ScrapeType, input } };
     const scraper = new TikTokScraper(contructor);
 
