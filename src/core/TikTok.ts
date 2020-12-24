@@ -882,6 +882,7 @@ export class TikTokScraper extends EventEmitter {
                 return response.userInfo
                 //throw new Error(`User is private: ${this.input}, code: ${response.statusCode}, error: ${JSON.stringify(response)}`);
             } else if (response.statusCode !== 0) {
+                //console.log('Request: ', response)
                 throw new Error(`Can't find user: ${this.input}, Other code: ${response.statusCode}`);
             }
             return response.userInfo;
